@@ -1,0 +1,22 @@
+.category-card {
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 5%;
+    transition: 300ms;
+}
+
+.category-card-container button {
+    display: block;
+}
+
+.category-card:hover {
+    background-color: #DAF5FF;
+    transition: 300ms;
+    cursor: pointer;
+}
+
+.category-token {
+    padding-top: 5%;
+    height: 5rem;
+    width: 5rem;
+}

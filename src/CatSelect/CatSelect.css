@@ -1,0 +1,11 @@
+.cat-select-container {
+    margin: 2% 15%;
+    text-align: center;
+}
+
+.category-card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
