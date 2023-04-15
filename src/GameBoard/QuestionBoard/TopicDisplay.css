@@ -1,0 +1,8 @@
+.topic-container {
+    border: 1px solid;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 0px;
+    grid-area: 1 / 2 / span 1 / span 2;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}

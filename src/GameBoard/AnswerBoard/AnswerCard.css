@@ -1,0 +1,10 @@
+.option-marker {
+    text-align: center;
+}
+
+.answer-card {
+    border: 1px solid;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+}
