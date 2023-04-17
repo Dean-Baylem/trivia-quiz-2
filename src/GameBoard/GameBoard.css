@@ -1,6 +1,6 @@
 .gameboard-container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
     margin: 5% 15%;
     text-align: center;
 }

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GameContext } from "../Context/GameContext";
 import CategoryCard from "../Components/Cards/CategoryCard";
 import "./CatSelect.css";
 
@@ -60,6 +61,18 @@ const categories = [
 ];
 
 const CatSelect = props => {
+
+  const game = useContext(GameContext)
+
+    const handleTopicSelect = async (topic, url) => {
+    game.changeTopic(topic);
+    game.storeURL(url);
+    game.storeTopic(topic);
+    await game.changeDifficulty();
+    props.handleFadeOut();
+  }
+
+  
     return (
       <div className="cat-select-container">
         <div className="select-title">
@@ -71,6 +84,8 @@ const CatSelect = props => {
               category={category.display}
               url={category.url}
               token={category.token}
+              handleTopicSelect={handleTopicSelect}
+              key={index}
             />
           ))}
         </div>

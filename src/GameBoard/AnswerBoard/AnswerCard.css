@@ -1,10 +1,31 @@
 .option-marker {
     text-align: center;
 }
-
-.answer-card {
+.base-answer-card {
     border: 1px solid;
     border-radius: 10px;
     display: grid;
     grid-template-columns: 1fr 7fr;
+    text-align: left;
+    transition: 400ms;
+}
+
+.answer-card {
+    background-color: #FFF;
+    transition: 400ms;
+}
+
+.answer-card:hover {
+    background-color: #EFFFFD;
+    transition: 400ms;
+}
+
+.correct {
+    background-color: green;
+    transition: 400ms;
+}
+
+.incorrect {
+    background-color: red;
+    transition: 400ms;
 }
