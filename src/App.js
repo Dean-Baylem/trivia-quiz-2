@@ -5,6 +5,7 @@ import Header from "./Header/Header";
 import GameBoard from "./GameBoard/GameBoard";
 import { CSSTransition } from "react-transition-group";
 import { GameContext } from "./Context/GameContext";
+import EndGameModal from "./EndGameModal/EndGameModal";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [quizURL, setQuizURL] = useState("");
   const [difficulty, setDifficulty] = useState("");
+  const [gameOver, setGameOver] = useState(false);
 
   // Functions to handle changes in Context
 
@@ -61,8 +63,21 @@ function App() {
         return "easy"    
       }
     })
-  })
+  }, [])
 
+  const endGame = useCallback(() => {
+    setGameOver(true);
+    console.log(" GAME OVER ");
+  }, [])
+
+  const resetGame = useCallback(() => {
+    setScore(0);
+    setCurrentTopic("");
+    setSelectedTopics([]);
+    setQuizURL("");
+    setDifficulty("");
+    setGameOver(false);
+  }, []);
 
 
   const [gameState, setGameState] = useState("select");
@@ -81,6 +96,10 @@ function App() {
   const handleFadeIn = () => {
     setGameState(nextGameState);
   }
+
+  const testModal = () => {
+    setGameOver(!gameOver);
+  }
   
 
   return (
@@ -91,15 +110,27 @@ function App() {
         currentTopic: currentTopic,
         quizUrl: quizURL,
         difficulty: difficulty,
+        gameOver: gameOver,
+        endGame: endGame,
         addPoint: addPoint,
         changeTopic: changeTopic,
         storeTopic: storeTopic,
         storeURL: storeURL,
         changeDifficulty: changeDifficulty,
+        resetGame: resetGame,
       }}
     >
       <div>
         <Header />
+        <CSSTransition
+        in={gameOver === true}
+        classNames="fade"
+        timeout={200}
+        mountOnEnter
+        unmountOnExit
+        >
+          <EndGameModal />
+        </CSSTransition>
         <CSSTransition
           in={gameState === "select"}
           classNames="fade"
@@ -118,7 +149,7 @@ function App() {
         >
           <GameBoard handleFadeOut={handleFadeOut} />
         </CSSTransition>
-        <button onClick={handleFadeOut}>Change Page</button>
+        <button onClick={testModal}>Change Page</button>
       </div>
     </GameContext.Provider>
   );

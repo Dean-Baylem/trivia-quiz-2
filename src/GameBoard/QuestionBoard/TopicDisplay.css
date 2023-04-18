@@ -4,5 +4,15 @@
     border-bottom: 0px;
     grid-area: 1 / 2 / span 1 / span 2;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Lora', serif;
+    font-size: 1.125rem;
+}
+
+.topic-container h5 {
+    margin: 1rem;
+}
+
+.topic-display {
+    border-right: 1px solid;
 }

@@ -6,9 +6,12 @@ export const GameContext = createContext({
     currentTopic: null,
     quizUrl: null,
     difficulty: null,
+    gameOver: null,
     addPoint: () => {},
     changeTopic: () => {},
     storeTopic: () => {},
     storeURL: () => {},
-    setDifficutly: () => {}
+    setDifficutly: () => {},
+    endGame: () => {},
+    resetGame: () => {},
 })

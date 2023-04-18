@@ -21,11 +21,11 @@
 }
 
 .correct {
-    background-color: green;
+    background-color: #82CD47;
     transition: 400ms;
 }
 
 .incorrect {
-    background-color: red;
+    background-color: #FF1700;
     transition: 400ms;
 }

@@ -31,7 +31,10 @@ const GameBoard = (props) => {
     setQuestionCount(questionCount+1);
     setLoadingQuestion(false);
     } else {
-      props.handleFadeOut();
+      props.handleFadeOut(); // This is where we will check for End of Game and update the Context.
+      if (game.selectedTopics.length === 3) {
+        game.endGame();
+      }
     }
   })
 
