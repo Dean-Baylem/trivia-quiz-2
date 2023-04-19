@@ -1,0 +1,15 @@
+.topic-list-container {
+    width: 15vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.topic-list {
+    padding: 0;
+    margin-top: 0;
+}
+
+.topic-title {
+    font-size: 0.9rem;
+}

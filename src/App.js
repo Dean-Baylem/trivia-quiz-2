@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import "./App.css";
 import CatSelect from "./CatSelect/CatSelect";
 import Header from "./Header/Header";
@@ -6,6 +6,9 @@ import GameBoard from "./GameBoard/GameBoard";
 import { CSSTransition } from "react-transition-group";
 import { GameContext } from "./Context/GameContext";
 import EndGameModal from "./EndGameModal/EndGameModal";
+import HeaderTopicList from "./Header/HeaderTopicList";
+import ScoreCard from "./Header/ScoreCard";
+import Footer from "./Footer/Footer";
 
 
 function App() {
@@ -103,55 +106,58 @@ function App() {
   
 
   return (
-    <GameContext.Provider
-      value={{
-        score: score,
-        selectedTopics: selectedTopics,
-        currentTopic: currentTopic,
-        quizUrl: quizURL,
-        difficulty: difficulty,
-        gameOver: gameOver,
-        endGame: endGame,
-        addPoint: addPoint,
-        changeTopic: changeTopic,
-        storeTopic: storeTopic,
-        storeURL: storeURL,
-        changeDifficulty: changeDifficulty,
-        resetGame: resetGame,
-      }}
-    >
-      <div>
-        <Header />
-        <CSSTransition
-        in={gameOver === true}
-        classNames="fade"
-        timeout={200}
-        mountOnEnter
-        unmountOnExit
-        >
-          <EndGameModal />
-        </CSSTransition>
-        <CSSTransition
-          in={gameState === "select"}
-          classNames="fade"
-          timeout={300}
-          unmountOnExit
-          onExited={handleFadeIn}
-        >
-          <CatSelect handleFadeOut={handleFadeOut} />
-        </CSSTransition>
-        <CSSTransition
-          in={gameState === "quiz"}
-          classNames="fade"
-          timeout={300}
-          unmountOnExit
-          onExited={handleFadeIn}
-        >
-          <GameBoard handleFadeOut={handleFadeOut} />
-        </CSSTransition>
-        <button onClick={testModal}>Change Page</button>
-      </div>
-    </GameContext.Provider>
+    <React.Fragment>
+      <GameContext.Provider
+        value={{
+          score: score,
+          selectedTopics: selectedTopics,
+          currentTopic: currentTopic,
+          quizUrl: quizURL,
+          difficulty: difficulty,
+          gameOver: gameOver,
+          endGame: endGame,
+          addPoint: addPoint,
+          changeTopic: changeTopic,
+          storeTopic: storeTopic,
+          storeURL: storeURL,
+          changeDifficulty: changeDifficulty,
+          resetGame: resetGame,
+        }}
+      >
+        <div className="body-container">
+          <CSSTransition
+            in={gameOver === true}
+            classNames="fade"
+            timeout={200}
+            mountOnEnter
+            unmountOnExit
+          >
+            <EndGameModal />
+          </CSSTransition>
+          <HeaderTopicList />
+          <CSSTransition
+            in={gameState === "select"}
+            classNames="fade"
+            timeout={300}
+            unmountOnExit
+            onExited={handleFadeIn}
+          >
+            <CatSelect handleFadeOut={handleFadeOut} />
+          </CSSTransition>
+          <CSSTransition
+            in={gameState === "quiz"}
+            classNames="fade"
+            timeout={300}
+            unmountOnExit
+            onExited={handleFadeIn}
+          >
+            <GameBoard handleFadeOut={handleFadeOut} />
+          </CSSTransition>
+          <ScoreCard score={score} />
+        </div>
+      </GameContext.Provider>
+      <Footer />
+    </React.Fragment>
   );
 }
 

@@ -1,6 +1,22 @@
 .gameboard-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin: 5% 15%;
+    margin: 2% 15%;
     text-align: center;
+}
+
+.game-container {
+        padding-bottom: 5%;
+    }
+
+@media screen and (max-width: 900px) {
+    .gameboard-container {
+        margin: 2% 10%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .gameboard-container {
+        margin: 4% 2%;
+    }
 }

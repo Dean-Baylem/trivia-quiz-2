@@ -9,3 +9,25 @@
     column-gap: 2rem;
     row-gap: 2rem;
 }
+
+.select-title {
+    font-family: 'Press Start 2P', cursive;
+    padding-bottom: 2%;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 900px) {
+.category-card-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cat-select-container { 
+    margin: 2% 5%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+ .category-card-container {
+    grid-template-columns: 1fr;
+ } 
+}

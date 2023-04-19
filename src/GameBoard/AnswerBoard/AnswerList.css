@@ -5,3 +5,10 @@
     flex-direction: column;
     row-gap: 2rem;
 }
+
+@media screen and (max-width: 500px) {
+    .answer-list {
+        margin: 5%;
+        padding: 0%;
+    }
+}

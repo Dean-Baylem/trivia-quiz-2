@@ -1,3 +1,10 @@
+.body-container {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  min-height: 80vh;
+  position: inherit;
+}
+
 .fade-enter {
   opacity: 0;
   transform: scale(0.9);
@@ -17,3 +24,16 @@
   transform: scale(0.5) translateX(100);;
   transition: opacity 300ms, transform 300ms;
 }
+
+@media screen and (max-width: 900px) {
+  .body-container {
+    grid-template-columns: 1fr;
+  }
+  .cat-select-container {
+    grid-area: 2 / 1 / span 2 / span 2;
+  }
+  .prev-topics {
+    display: none;
+  }
+}
+
