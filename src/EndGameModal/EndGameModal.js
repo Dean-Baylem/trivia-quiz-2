@@ -31,6 +31,13 @@ const ModalOverlay = (props) => {
           />
         </div>
         {!startSave && <p>You got a score of {props.score}</p>}
+        <div className="leaderboard">
+          <ul className="leaderboard-list">
+            {game.topScores.map((entry, index) => (
+              <li className="leaderboard-item" key={index}>{entry.name} | {entry.score}</li>
+            ))}
+          </ul>
+        </div>
         {saveFinished && (
           <p>Thank you for playing! Your score has been saved!</p>
         )}
@@ -48,7 +55,7 @@ const ModalOverlay = (props) => {
             Start Again
           </Button>
         )}
-        {!startSave && !saveFinished && (
+        {/* {!startSave && !saveFinished && (
           <Button onClick={handleStartSave} size="small" variant="outlined">
             Save Score
           </Button>
@@ -62,7 +69,7 @@ const ModalOverlay = (props) => {
           <Button onClick={handleStartSave} variant="outlined">
             Go Back
           </Button>
-        )}
+        )} */}
       </footer>
     </div>
   );

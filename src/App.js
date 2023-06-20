@@ -21,6 +21,7 @@ function App() {
   const [quizURL, setQuizURL] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [gameOver, setGameOver] = useState(false);
+  const [topScores, setTopScores] = useState([]);
 
   // Functions to handle changes in Context
 
@@ -40,6 +41,19 @@ function App() {
         console.log("No difficulty found");  
     }
   }
+
+  const changeTopScores = useCallback( async () => {
+    try {
+      const response = await fetch("http://localhost:5000/scores/getscores",
+      {
+        method: "GET",
+      });
+      const responseData = await response.json();
+      setTopScores(responseData.scores);
+    } catch (err) {
+      console.log(err)
+    }
+  }, [])
 
   const changeTopic = useCallback((topic) => {
     setCurrentTopic(topic);
@@ -99,10 +113,6 @@ function App() {
   const handleFadeIn = () => {
     setGameState(nextGameState);
   }
-
-  const testModal = () => {
-    setGameOver(!gameOver);
-  }
   
 
   return (
@@ -122,6 +132,8 @@ function App() {
           storeURL: storeURL,
           changeDifficulty: changeDifficulty,
           resetGame: resetGame,
+          topScores: topScores,
+          changeTopScores: changeTopScores,
         }}
       >
         <div className="body-container">
@@ -131,6 +143,7 @@ function App() {
             timeout={200}
             mountOnEnter
             unmountOnExit
+            onEnter={changeTopScores}
           >
             <EndGameModal />
           </CSSTransition>
